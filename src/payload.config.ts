@@ -34,6 +34,26 @@ const smtpPort = Number(process.env.SMTP_PORT || '587')
 const smtpSecure = process.env.SMTP_SECURE === 'true'
 const defaultFromAddress = process.env.SMTP_FROM_EMAIL || siteConfig.contactEmail
 const defaultFromName = process.env.SMTP_FROM_NAME || siteConfig.name
+const emailConfig = process.env.SMTP_HOST
+  ? {
+      email: nodemailerAdapter({
+        defaultFromAddress,
+        defaultFromName,
+        transportOptions: {
+          auth:
+            process.env.SMTP_USER && process.env.SMTP_PASS
+              ? {
+                  pass: process.env.SMTP_PASS,
+                  user: process.env.SMTP_USER,
+                }
+              : undefined,
+          host: process.env.SMTP_HOST,
+          port: Number.isFinite(smtpPort) ? smtpPort : 587,
+          secure: smtpSecure,
+        },
+      }),
+    }
+  : {}
 
 const defaultEditor = lexicalEditor({
   features: [
@@ -100,29 +120,7 @@ export default buildConfig({
     client: getDatabaseClientConfig(),
     push: process.env.PAYLOAD_PUSH === 'true' || (process.env.NODE_ENV === 'development' && process.env.PAYLOAD_PUSH !== 'false'),
   }),
-  email: nodemailerAdapter(
-    process.env.SMTP_HOST
-      ? {
-          defaultFromAddress,
-          defaultFromName,
-          transportOptions: {
-            auth:
-              process.env.SMTP_USER && process.env.SMTP_PASS
-                ? {
-                    pass: process.env.SMTP_PASS,
-                    user: process.env.SMTP_USER,
-                  }
-                : undefined,
-            host: process.env.SMTP_HOST,
-            port: Number.isFinite(smtpPort) ? smtpPort : 587,
-            secure: smtpSecure,
-          },
-        }
-      : {
-          defaultFromAddress,
-          defaultFromName,
-        },
-  ),
+  ...emailConfig,
   editor: defaultEditor,
   secret: process.env.PAYLOAD_SECRET || 'troque-esta-chave-em-desenvolvimento',
   sharp,
