@@ -13,7 +13,7 @@
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "seed": "cross-env NODE_OPTIONS=--no-deprecation tsx src/scripts/seed.ts",
     "setup": "npm run generate:types && npm run generate:importmap",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "node --no-deprecation ./node_modules/next/dist/bin/next start"
   },
   "dependencies": {
     "@payloadcms/db-sqlite": "3.83.0",
