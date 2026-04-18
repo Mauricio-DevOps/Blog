@@ -7,7 +7,7 @@ function validateHexTone(value: unknown) {
   const normalized = String(value || '').trim()
 
   if (!normalized) {
-    return 'A cor do accent é obrigatória.'
+    return 'A cor do accent é obrigatória. '
   }
 
   if (!/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(normalized)) {
