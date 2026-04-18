@@ -3,11 +3,14 @@ import type {
   DefaultTypedEditorState,
   SerializedLinkNode,
 } from '@payloadcms/richtext-lexical'
+import type { LexicalEditorNodeMap } from '@payloadcms/richtext-lexical'
 import {
   type JSXConvertersFunction,
   LinkJSXConverter,
   RichText as PayloadRichText,
 } from '@payloadcms/richtext-lexical/react'
+
+import { richTextNodeMap } from '@/components/richtext/UploadNode'
 
 type NodeTypes = DefaultNodeTypes
 
@@ -38,11 +41,22 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
   ...LinkJSXConverter({ internalDocToHref }),
 })
 
+const nodeMap: LexicalEditorNodeMap = {
+  ...richTextNodeMap,
+}
+
 type Props = {
   className?: string
   content: DefaultTypedEditorState
 }
 
 export function RichText({ className = '', content }: Props) {
-  return <PayloadRichText className={`article-richtext ${className}`.trim()} converters={jsxConverters} data={content} />
+  return (
+    <PayloadRichText
+      className={`article-richtext ${className}`.trim()}
+      converters={jsxConverters}
+      data={content}
+      nodeMap={nodeMap}
+    />
+  )
 }

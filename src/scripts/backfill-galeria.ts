@@ -3,11 +3,12 @@ import sharp from 'sharp'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
+import { getDatabaseClientConfig } from '@/lib/database'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 const projectRoot = path.resolve(dirname, '../..')
 const mediaDir = path.join(projectRoot, 'media')
-const dbUrl = process.env.DATABASE_URL || 'file:/e:/IA/Blog/blog-nerd.db'
 
 type MediaRow = {
   alt: string
@@ -59,7 +60,7 @@ function generateImageSizeFilename({
 }
 
 async function main() {
-  const db = createClient({ url: dbUrl })
+  const db = createClient(getDatabaseClientConfig())
   const result = await db.execute(
     'select id, alt, filename, mime_type, url, width, height, sizes_galeria_url, sizes_galeria_width, sizes_galeria_height, sizes_galeria_mime_type, sizes_galeria_filesize, sizes_galeria_filename from media',
   )

@@ -1,6 +1,6 @@
 # Nebulosa Pop
 
-MVP local-first de um blog nerd em PT-BR construído com `Next.js + Payload CMS + SQLite`.
+MVP local-first de um blog nerd em PT-BR construído com `Next.js + Payload CMS + SQLite/Turso`.
 
 O projeto nasce com:
 
@@ -17,7 +17,7 @@ O projeto nasce com:
 
 - `Next.js 16`
 - `Payload CMS 3.83`
-- `SQLite` via `@payloadcms/db-sqlite`
+- `SQLite` local ou `Turso/libSQL` via `@payloadcms/db-sqlite`
 - `Lexical` para rich text
 
 ## Rodando localmente
@@ -90,6 +90,15 @@ O seed cria:
 - 4 rascunhos preparados para curiosidades, novidades e review
 
 O banco SQLite local fica em `blog-nerd.db`.
+
+## Turso em produção
+
+Para publicar fora da sua máquina, use estas variáveis:
+
+- `DATABASE_URL=libsql://...`
+- `TURSO_AUTH_TOKEN=...`
+
+O código continua funcionando localmente com `DATABASE_URL=file:./blog-nerd.db` quando essas variáveis de produção não estiverem definidas.
 
 ## Verificação já executada
 

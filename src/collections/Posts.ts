@@ -47,6 +47,7 @@ export const Posts: CollectionConfig = {
         },
       },
       editor: lexicalEditor({
+        views: '@/components/admin/lexical/PostUploadView.client#postContentViews',
         features: ({ rootFeatures }) => {
           return [
             ...rootFeatures,

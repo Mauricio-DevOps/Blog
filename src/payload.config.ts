@@ -25,6 +25,7 @@ import { Posts } from '@/collections/Posts'
 import { Sections } from '@/collections/Sections'
 import { Tags } from '@/collections/Tags'
 import { Users } from '@/collections/Users'
+import { getDatabaseClientConfig } from '@/lib/database'
 import { getSiteURL, siteConfig } from '@/lib/site'
 
 const filename = fileURLToPath(import.meta.url)
@@ -96,9 +97,7 @@ export default buildConfig({
   ],
   cors: [getSiteURL()].filter(Boolean),
   db: sqliteAdapter({
-    client: {
-      url: process.env.DATABASE_URL || 'file:./blog-nerd.db',
-    },
+    client: getDatabaseClientConfig(),
     push: process.env.PAYLOAD_PUSH === 'true' || (process.env.NODE_ENV === 'development' && process.env.PAYLOAD_PUSH !== 'false'),
   }),
   email: nodemailerAdapter(
