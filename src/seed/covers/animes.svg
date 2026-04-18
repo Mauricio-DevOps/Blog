@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <rect width="1600" height="900" fill="#251C11"/>
+  <rect x="72" y="72" width="1456" height="756" rx="36" fill="#C46F16"/>
+  <rect x="120" y="120" width="1360" height="660" rx="28" fill="#FFF8EF"/>
+  <path d="M1120 250L1258 182L1232 336L1368 410L1221 466L1194 618L1116 484L968 512L1068 394L986 264L1120 250Z" fill="#C46F16" fill-opacity=".24"/>
+  <text x="210" y="268" fill="#251C11" font-family="Arial, sans-serif" font-size="72" font-weight="700">ANIMES</text>
+  <text x="210" y="360" fill="#251C11" font-family="Georgia, serif" font-size="108" font-weight="700">Contexto</text>
+  <text x="210" y="470" fill="#251C11" font-family="Georgia, serif" font-size="108" font-weight="700">antes do hype</text>
+  <text x="210" y="585" fill="#6F5635" font-family="Arial, sans-serif" font-size="38">Filler, gêneros, ordem de exibição e vocabulário básico.</text>
+</svg>

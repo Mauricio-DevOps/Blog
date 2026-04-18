@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <rect width="1600" height="900" fill="#142030"/>
+  <rect x="72" y="72" width="1456" height="756" rx="36" fill="#245FB6"/>
+  <rect x="120" y="120" width="1360" height="660" rx="28" fill="#F3F7FB"/>
+  <rect x="960" y="170" width="360" height="360" rx="30" fill="#245FB6" fill-opacity=".14"/>
+  <rect x="1010" y="220" width="260" height="46" rx="12" fill="#245FB6" fill-opacity=".22"/>
+  <rect x="1010" y="298" width="260" height="46" rx="12" fill="#245FB6" fill-opacity=".22"/>
+  <rect x="1010" y="376" width="260" height="46" rx="12" fill="#245FB6" fill-opacity=".22"/>
+  <text x="210" y="268" fill="#142030" font-family="Arial, sans-serif" font-size="72" font-weight="700">SÉRIES</text>
+  <text x="210" y="360" fill="#142030" font-family="Georgia, serif" font-size="108" font-weight="700">Guias para</text>
+  <text x="210" y="470" fill="#142030" font-family="Georgia, serif" font-size="108" font-weight="700">maratonar melhor</text>
+  <text x="210" y="585" fill="#4F5E72" font-family="Arial, sans-serif" font-size="38">Explicações rápidas antes do próximo episódio.</text>
+</svg>
