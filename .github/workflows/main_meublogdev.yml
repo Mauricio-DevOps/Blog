@@ -69,17 +69,27 @@ jobs:
           npm run build --if-present
           npm run test --if-present
 
+      - name: Validate production build output
+        run: |
+          if [ ! -f ".next/BUILD_ID" ]; then
+            echo "Missing .next/BUILD_ID after next build"
+            exit 1
+          fi
+
+      - name: Create deployment package
+        run: |
+          rm -f release.zip
+          zip -r release.zip . \
+            -x ".git/*" \
+               ".github/*" \
+               ".vs/*" \
+               ".next/cache/*"
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          include-hidden-files: true
-          path: |
-            .
-            !.git/**
-            !.github/**
-            !.next/cache/**
-            !.vs/**
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -107,5 +117,5 @@ jobs:
         with:
           app-name: 'meublogdev'
           slot-name: 'Production'
-          package: .
+          package: release.zip
           
