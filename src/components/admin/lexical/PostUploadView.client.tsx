@@ -2,7 +2,6 @@
 /* eslint-disable @next/next/no-img-element */
 
 import type { LexicalEditorViewMap } from '@payloadcms/richtext-lexical'
-import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
 import { $getNodeByKey } from 'lexical'
 import { Button, useConfig } from '@payloadcms/ui'
 import { useEffect, useId, useState } from 'react'
@@ -33,6 +32,23 @@ type UploadNodeData = {
   value?: number | string | UploadMediaDoc | null
 }
 
+type UploadEditorViewProps = {
+  config: {
+    routes: {
+      api: string
+    }
+    serverURL: string
+  }
+  editor: {
+    getEditorState: () => {
+      read: <T>(fn: () => T) => T
+    }
+    registerUpdateListener: (listener: () => void) => () => void
+    update: (fn: () => void) => void
+  }
+  node: UploadNodeData
+}
+
 function buildMediaURL(serverURL: string, apiRoute: string, id: unknown) {
   return `${serverURL.replace(/\/$/, '')}${apiRoute}/media/${encodeURIComponent(String(id))}?depth=0`
 }
@@ -41,9 +57,28 @@ function isPopulatedUpload(value: UploadNodeData['value']): value is UploadMedia
   return typeof value === 'object' && value !== null && typeof value.url === 'string'
 }
 
+function readUploadSnapshot(editor: UploadEditorViewProps['editor'], node: UploadNodeData) {
+  return editor.getEditorState().read(() => {
+    const nodeKey = node.getKey?.() || ''
+    const liveNode = $getNodeByKey(nodeKey) as UploadNodeData | null
+
+    if (!nodeKey || !liveNode?.getData) {
+      return {
+        data: null,
+        nodeKey,
+      }
+    }
+
+    return {
+      data: liveNode.getData(),
+      nodeKey,
+    }
+  })
+}
+
 function setNodeField(
   nodeKey: string,
-  editor: ReturnType<typeof useLexicalComposerContext>[0],
+  editor: UploadEditorViewProps['editor'],
   patch: Record<string, unknown>,
 ) {
   editor.update(() => {
@@ -75,7 +110,7 @@ function setNodeField(
 
 function clearNodeSize(
   nodeKey: string,
-  editor: ReturnType<typeof useLexicalComposerContext>[0],
+  editor: UploadEditorViewProps['editor'],
   fields: Record<string, unknown>,
 ) {
   editor.update(() => {
@@ -98,23 +133,32 @@ function clearNodeSize(
   })
 }
 
-function UploadEditorView({
+function UploadEditorViewClient({
+  editor,
   node,
-}: {
-  node: UploadNodeData
-}) {
-  const [editor] = useLexicalComposerContext()
+}: UploadEditorViewProps) {
   const { config } = useConfig()
-  const nodeKey = node.getKey?.() || ''
-  const data = node.getData?.() || node
-  const uploadValue = data.value
-  const fields = data.fields || {}
+  const [snapshot, setSnapshot] = useState(() => readUploadSnapshot(editor, node))
+  const data = snapshot.data
+  const nodeKey = snapshot.nodeKey
+  const uploadValue = data?.value
+  const fields = data?.fields || {}
   const [media, setMedia] = useState<UploadMediaDoc | null>(
     isPopulatedUpload(uploadValue) ? uploadValue : null,
   )
   const widthInputId = useId()
   const heightInputId = useId()
   const { height, width } = getUploadResizeValues(fields)
+
+  useEffect(() => {
+    setSnapshot(readUploadSnapshot(editor, node))
+  }, [editor, node])
+
+  useEffect(() => {
+    return editor.registerUpdateListener(() => {
+      setSnapshot(readUploadSnapshot(editor, node))
+    })
+  }, [editor, node])
 
   useEffect(() => {
     if (isPopulatedUpload(uploadValue)) {
@@ -241,6 +285,10 @@ function UploadEditorView({
       </div>
     </div>
   )
+}
+
+function UploadEditorView(props: UploadEditorViewProps) {
+  return <UploadEditorViewClient {...props} />
 }
 
 export const postContentViews: LexicalEditorViewMap = {
