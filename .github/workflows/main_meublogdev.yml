@@ -42,6 +42,27 @@ jobs:
         with:
           node-version: '20.x'
 
+      - name: Validate required build secrets
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "Missing GitHub Actions secret: DATABASE_URL"
+            exit 1
+          fi
+
+          if [ -z "$TURSO_AUTH_TOKEN" ]; then
+            echo "Missing GitHub Actions secret: TURSO_AUTH_TOKEN"
+            exit 1
+          fi
+
+          case "$DATABASE_URL" in
+            libsql://*)
+              ;;
+            *)
+              echo "DATABASE_URL must point to Turso with a libsql:// URL"
+              exit 1
+              ;;
+          esac
+
       - name: npm install, build, and test
         run: |
           npm ci
