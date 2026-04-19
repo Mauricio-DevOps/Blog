@@ -63,7 +63,7 @@ function buildHeadlineSlides(posts: Array<null | Post | undefined>) {
       id: String(post.id),
       imageAlt: getMediaAlt(post.coverImage, post.title),
       imageUrl: getMediaUrl(post.coverImage),
-      label: `Clickbait ${index + 1}`,
+      label: `Post ${index + 1}`,
       meta: [
         getSectionLabel(post.section),
         getPostTypeLabel(post.postType),
@@ -98,7 +98,7 @@ function buildLatestNewsItems(posts: Array<null | Post | undefined>) {
       imageUrl: getMediaUrl(post.coverImage),
       meta: [
         getSectionLabel(post.section),
-        `Clickbait ${index + 1}`,
+        `Post ${index + 1}`,
         formatPublishedDate(post.publishedAt),
       ],
       title: post.title,
