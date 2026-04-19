@@ -18,7 +18,7 @@ export function Header({ sections }: Props) {
       <div className="shell site-header__inner">
         <Link className="site-header__brand" href="/">
           <span className="site-header__brand-mark">NP</span>
-          <span>
+          <span className="site-header__brand-copy">
             <strong>{siteConfig.name}</strong>
             <small>{siteConfig.tagline}</small>
           </span>

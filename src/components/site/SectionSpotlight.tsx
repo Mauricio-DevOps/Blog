@@ -49,7 +49,7 @@ export function SectionSpotlight({ posts, section }: Props) {
             <article className="section-spotlight-card" key={post.id}>
               <Link className="section-spotlight-card__image" href={getPostHref(post)}>
                 {imageUrl ? (
-                  <MediaFigure alt={imageAlt} sizes="220px" src={imageUrl} />
+                  <MediaFigure alt={imageAlt} sizes="(max-width: 820px) 76vw, 220px" src={imageUrl} />
                 ) : (
                   <span aria-hidden="true" className="section-spotlight-card__image-fallback" />
                 )}
