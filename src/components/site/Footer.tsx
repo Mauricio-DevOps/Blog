@@ -13,7 +13,7 @@ export function Footer({ sections }: Props) {
     <footer className="site-footer">
       <div className="shell site-footer__grid">
         <div>
-          <span className="eyebrow">Nebulosa Pop</span>
+          <span className="eyebrow">Perfeito é só...</span>
           <h2>Um blog para aprender antes de maratonar.</h2>
           <p>
             O foco deste MVP e organizar conteudo util, recorrente e navegavel em torno de filmes,

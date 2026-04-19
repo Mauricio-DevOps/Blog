@@ -1,9 +1,11 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import type { Section } from '@/payload-types'
 
 import { getSectionTone, getSectionToneStyle } from '@/lib/relations'
 import { siteConfig } from '@/lib/site'
+import logo from '../../../public/logo.png'
 
 import { HeaderAuthAction } from './HeaderAuthAction'
 import { HeaderMobileMenu } from './HeaderMobileMenu'
@@ -20,7 +22,13 @@ export function Header({ sections }: Props) {
         <HeaderMobileMenu sections={sections} />
 
         <Link className="site-header__brand" href="/">
-          <span className="site-header__brand-mark">NP</span>
+          <Image
+            alt=""
+            className="site-header__brand-mark"
+            height={48}
+            src={logo}
+            width={48}
+          />
           <span className="site-header__brand-copy">
             <strong>{siteConfig.name}</strong>
             <small>{siteConfig.tagline}</small>

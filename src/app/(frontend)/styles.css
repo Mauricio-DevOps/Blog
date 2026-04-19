@@ -303,14 +303,11 @@ main {
 }
 
 .site-header__brand-mark {
-  display: grid;
-  place-items: center;
+  display: block;
+  flex-shrink: 0;
   width: 3rem;
   height: 3rem;
-  border-radius: 0.9rem;
-  background: linear-gradient(135deg, var(--button-solid-bg), var(--tone));
-  color: var(--button-solid-ink);
-  font-weight: 700;
+  object-fit: contain;
 }
 
 .site-header__brand strong,

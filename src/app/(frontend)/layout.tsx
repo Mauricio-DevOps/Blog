@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Source_Serif_4, Space_Grotesk } from 'next/font/google'
+import Script from 'next/script'
 import React from 'react'
 
 import { newsletterAuthProviderAvailability } from '@/auth'
@@ -8,7 +9,6 @@ import { Footer } from '@/components/site/Footer'
 import { Header } from '@/components/site/Header'
 import { getNavigationSections } from '@/lib/queries'
 import { getSiteURL, siteConfig } from '@/lib/site'
-import { siteThemeInitScript } from '@/lib/theme'
 
 import { authenticateNewsletterMember, startNewsletterOAuth } from './actions'
 import './styles.css'
@@ -50,10 +50,8 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       lang="pt-BR"
       suppressHydrationWarning
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: siteThemeInitScript }} />
-      </head>
       <body>
+        <Script id="site-theme-init" src="/site-theme-init.js" strategy="beforeInteractive" />
         <AppProviders
           authenticateAction={authenticateNewsletterMember}
           oauthAction={startNewsletterOAuth}

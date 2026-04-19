@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: getAbsoluteURL('/contato'),
   },
-  description: 'Pagina de contato e patrocinio do Nebulosa Pop.',
+  description: 'Pagina de contato e patrocinio do Perfeito é só....',
   title: `Fale Conosco | ${siteConfig.name}`,
 }
 

@@ -2,9 +2,9 @@ export const siteConfig = {
   contactEmail: 'editorial@nebulosapop.local',
   description:
     'Explicações, novidades e curiosidades de cultura pop em PT-BR para quem quer entender antes de maratonar.',
-  name: 'Nebulosa Pop',
+  name: 'Perfeito é só...',
   shortName: 'Nebulosa',
-  tagline: 'Cultura pop sem complicação para iniciantes curiosos.',
+  tagline: 'Um casal sem conhecimento, mas com tempo livre de sobra para dar pitaco',
 } as const
 
 export const sectionOrder = ['filmes', 'series', 'animes', 'games'] as const

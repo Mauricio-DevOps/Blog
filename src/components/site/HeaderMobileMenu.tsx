@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
@@ -7,6 +8,7 @@ import type { Section } from '@/payload-types'
 
 import { getSectionTone, getSectionToneStyle } from '@/lib/relations'
 import { siteConfig } from '@/lib/site'
+import logo from '../../../public/logo.png'
 
 import { HeaderAuthAction } from './HeaderAuthAction'
 import { ThemeToggle } from './ThemeToggle'
@@ -104,7 +106,13 @@ export function HeaderMobileMenu({ sections }: Props) {
       >
         <div className="site-header__mobile-drawer-header">
           <Link className="site-header__mobile-brand" href="/" onClick={handleClose}>
-            <span className="site-header__brand-mark">NP</span>
+            <Image
+              alt=""
+              className="site-header__brand-mark"
+              height={48}
+              src={logo}
+              width={48}
+            />
             <span className="site-header__mobile-brand-copy">
               <strong>{siteConfig.name}</strong>
               <small>Navegacao</small>

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: getAbsoluteURL('/sobre'),
   },
-  description: 'Sobre o projeto editorial Nebulosa Pop.',
+  description: 'Sobre o projeto editorial Perfeito é só....',
   title: `Sobre | ${siteConfig.name}`,
 }
 
@@ -30,7 +30,7 @@ export default async function SobrePage({ searchParams }: Props) {
         <span className="eyebrow">Manifesto editorial</span>
         <h1>Um blog para tirar duvidas sem tratar o leitor como intruso.</h1>
         <p>
-          O Nebulosa Pop nasce para organizar contexto, curiosidade e repertorio em torno da cultura
+          O Perfeito é só... nasce para organizar contexto, curiosidade e repertorio em torno da cultura
           pop. O compromisso do projeto e tornar o universo nerd mais navegavel, principalmente para
           quem esta chegando agora.
         </p>
