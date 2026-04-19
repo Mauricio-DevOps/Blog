@@ -6,6 +6,7 @@ import { getSectionTone, getSectionToneStyle } from '@/lib/relations'
 import { siteConfig } from '@/lib/site'
 
 import { HeaderAuthAction } from './HeaderAuthAction'
+import { HeaderMobileMenu } from './HeaderMobileMenu'
 import { ThemeToggle } from './ThemeToggle'
 
 type Props = {
@@ -16,6 +17,8 @@ export function Header({ sections }: Props) {
   return (
     <header className="site-header">
       <div className="shell site-header__inner">
+        <HeaderMobileMenu sections={sections} />
+
         <Link className="site-header__brand" href="/">
           <span className="site-header__brand-mark">NP</span>
           <span className="site-header__brand-copy">
