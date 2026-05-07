@@ -1,4 +1,4 @@
-# Nebulosa Pop
+# Perfeito é só...
 
 MVP local-first de um blog nerd em PT-BR construído com `Next.js + Payload CMS + SQLite/Turso`.
 

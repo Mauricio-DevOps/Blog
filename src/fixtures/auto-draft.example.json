@@ -1,0 +1,72 @@
+{
+  "topic": "Como trailers ajudam o publico a decidir o que assistir",
+  "title": "Como trailers ajudam a escolher o proximo filme sem cair no hype",
+  "excerpt": "Um guia simples para ler trailers com mais contexto, separar promessa de expectativa e decidir melhor o que vale assistir.",
+  "sectionSlug": "filmes",
+  "postType": "explicador",
+  "tagSlugs": ["contexto", "por-onde-comecar"],
+  "seoTitle": "Como ler trailers de filmes sem cair no hype",
+  "seoDescription": "Entenda como analisar trailers de filmes com contexto, sem depender apenas de cortes chamativos e campanhas de marketing.",
+  "coverAssetKey": "cover-clapperboard",
+  "assets": [
+    {
+      "key": "cover-clapperboard",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Clapperboard.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Clapperboard.svg",
+      "alt": "Ilustracao de claquete de cinema",
+      "caption": "Claquete usada como imagem editorial para falar sobre trailers e cinema.",
+      "credit": "User:Indolences, Wikimedia Commons",
+      "license": "Public domain"
+    },
+    {
+      "key": "inline-film-reel",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Film_reel.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Film_reel.svg",
+      "alt": "Ilustracao de rolo de filme",
+      "caption": "Rolo de filme usado como apoio visual no corpo do artigo.",
+      "credit": "User:Bromskloss, Wikimedia Commons",
+      "license": "CC BY-SA 3.0 / GFDL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Trailer nao e sinopse completa. Ele e uma peca de convencimento, montada para vender tom, escala, elenco e promessa emocional em poucos minutos."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "O que observar antes de entrar no hype"
+    },
+    {
+      "type": "paragraph",
+      "text": "O primeiro passo e separar imagem chamativa de informacao util. Um trailer pode mostrar cenas grandes sem explicar conflito, ritmo ou ponto de vista do filme."
+    },
+    {
+      "type": "image",
+      "assetKey": "inline-film-reel",
+      "width": 720
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Como transformar trailer em decisao pratica"
+    },
+    {
+      "type": "paragraph",
+      "text": "Compare a promessa do trailer com diretor, estudio, historico da franquia e primeiras fontes confiaveis. Isso ajuda a decidir se vale ir no lancamento, esperar reviews ou deixar para o streaming."
+    }
+  ],
+  "sources": [
+    {
+      "title": "File:Clapperboard.svg",
+      "publisher": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Clapperboard.svg"
+    },
+    {
+      "title": "File:Film reel.svg",
+      "publisher": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Film_reel.svg"
+    }
+  ]
+}
